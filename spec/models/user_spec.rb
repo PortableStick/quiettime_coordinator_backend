@@ -27,4 +27,19 @@ RSpec.describe User, type: :model do
       expect(user).to validate_uniqueness_of :email
     end
   end
+
+  context "#downcase email" do
+    it 'changes the email to lower case' do
+      user = User.new(valid_attributes.merge(email: "A@B.COM"))
+      expect { user.downcase_email }.to change { user.email }
+        .from("A@B.COM")
+        .to("a@b.com")
+    end
+
+    it 'downcases the email before saving' do
+      user = User.new(valid_attributes.merge(email: "A@B.COM"))
+      expect(user.save).to be true
+      expect(user.email).to eq('a@b.com')
+    end
+  end
 end
