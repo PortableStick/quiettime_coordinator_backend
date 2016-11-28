@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe SessionsController, type: :controller do
+RSpec.describe Api::V1::SessionsController, type: :controller do
   context "authorization" do
     let(:user) { create(:user) }
 
@@ -10,7 +10,7 @@ RSpec.describe SessionsController, type: :controller do
 
     it "calls the Auth module to issue the jwt" do
       expect(Auth).to receive(:issue).with(user: user.id)
-      post :create, auth: { email: user.email, password: user.password }
+      SessionsHelper::Requests.post_request
     end
 
     it "returns a jwt when given valid credentials" do
