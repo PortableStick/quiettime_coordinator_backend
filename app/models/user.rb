@@ -8,4 +8,16 @@ class User < ApplicationRecord
   def downcase_email
     self.email = email.downcase
   end
+
+  def add_location_to_plans(location)
+    return false if plans.include? location
+    plans_will_change!
+    update_attribute :plans, plans.push(location)
+  end
+
+  def remove_location_from_plans(location)
+    return false unless plans.include? location
+    plans_will_change!
+    update_attribute :plans, plans - [location]
+  end
 end

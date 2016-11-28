@@ -18,9 +18,9 @@ ActiveRecord::Schema.define(version: 20161127210534) do
   create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "password_digest"
-    t.string   "plans"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "plans",           default: [],              array: true
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
 end

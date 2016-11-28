@@ -42,4 +42,28 @@ RSpec.describe User, type: :model do
       expect(user.email).to eq('a@b.com')
     end
   end
+
+  context 'plans' do
+    let(:user) { build(:user) }
+
+    it 'has an array of plans' do
+      expect(user.plans).to be_a(Array)
+    end
+
+    context '#add_location_to_plans' do
+      it 'should add the given location to user\'s plans' do
+        user.add_location_to_plans("Disneyland")
+        expect(user.plans).to include("Disneyland")
+      end
+    end
+
+    context '#remove_location_from_plans' do
+      it 'should remove the given location from the user\'s plans' do
+        user.add_location_to_plans("Disneyland")
+        expect(user.plans).to include("Disneyland")
+        user.remove_location_from_plans("Disneyland")
+        expect(user.plans).not_to include("Disneyland")
+      end
+    end
+  end
 end
