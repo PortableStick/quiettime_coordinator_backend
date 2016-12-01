@@ -8,7 +8,7 @@ RSpec.describe Api::V1::TokensController, type: :controller do
 
     it "finds the user" do
       expect(User).to receive(:find_by).with(email: user.email).and_return(user)
-      post api_v1_login_path, auth: { email: user.email, password: user.password }
+      post api_v1_login_path, params: { auth: { email: user.email, password: user.password } }
     end
 
     it "authenticates the user via the given password" do
