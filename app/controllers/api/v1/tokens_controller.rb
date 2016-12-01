@@ -8,6 +8,6 @@ class Api::V1::TokensController < ApplicationController
   private
 
   def user_params
-    params.require(:auth).permit(:email, :password)
+    params.fetch(:auth, {}).permit(:email, :password)
   end
 end
