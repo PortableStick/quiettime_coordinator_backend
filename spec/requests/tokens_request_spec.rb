@@ -9,35 +9,35 @@ RSpec.describe Api::V1::TokensController, type: :request do
       { message: "Invalid credentials" }.to_json
     end
 
-    def post_login(auth_hash = { auth: { email: user.email, password: user.password } })
-      post "/api/v1/login", auth_hash, { format: 'json', accept: 'application/json' }
+    def post_login(auth_hash = { params: { auth: { email: user.email, password: user.password } } })
+      post "/api/v1/login", auth_hash
     end
 
     it 'status code is 200' do
       post_login
-      expect(last_response.status).to eq(200)
+      expect(response.status).to eq(200)
     end
 
     it 'sends the token' do
       post_login
-      expect(last_response.body).to eq(jwt)
+      expect(response.body).to eq(jwt)
     end
 
     it "returns an error when given an invalid password" do
-      post_login({ auth: { email: user.email, password: "nope" } })
-      expect(last_response).to_not be_ok
-      expect(last_response.body).to eq(error_message)
+      post_login({ params: { auth: { email: user.email, password: "nope" } } })
+      expect(response).to_not be_ok
+      expect(response.body).to eq(error_message)
     end
 
     it "returns an error when given no credentials" do
-      post_login({ auth: { email: "", password: "" } })
-      expect(last_response).to_not be_ok
-      expect(last_response.body).to eq(error_message)
+      post_login({ params: { auth: { email: "", password: "" } } })
+      expect(response).to_not be_ok
+      expect(response.body).to eq(error_message)
     end
 
     it "returns an error when the request object format is invalid" do
-      post_login({ email: user.email, password: user.password })
-      expect(last_response).to_not be_ok
+      post_login({ params: { email: user.email, password: user.password } })
+      expect(response).to_not be_ok
     end
   end
 end
