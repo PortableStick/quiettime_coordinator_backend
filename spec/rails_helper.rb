@@ -23,12 +23,13 @@ require 'shoulda-matchers'
 # require only the support files necessary.
 #
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
-
+WebMock.disable_net_connect!(allow_localhost: true)
 # Checks for pending migration and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 # DatabaseCleaner.strategy = :truncation
 RSpec.configure do |config|
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
