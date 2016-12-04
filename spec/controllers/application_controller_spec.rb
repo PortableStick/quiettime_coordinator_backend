@@ -56,8 +56,8 @@ RSpec.describe ApplicationController, type: :controller do
         allow(controller).to receive(:logged_in?).and_return(false)
       end
 
-      it 'it renders an error with status 401' do
-        expect(controller).to receive(:render).with(json: { message: "Unauthorized access" }, status: 401)
+      it 'it renders an error with status 403' do
+        expect(controller).to receive(:render).with(json: { message: "Unauthorized access" }, status: 403)
         controller.send(:authenticate)
       end
     end
