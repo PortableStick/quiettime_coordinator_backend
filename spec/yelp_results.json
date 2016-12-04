@@ -1,0 +1,117 @@
+{
+  "region": {
+    "span": {
+      "latitude_delta": 0.10831280855867931,
+      "longitude_delta": 0.10273553913688716
+    },
+    "center": {
+      "latitude": 40.714067969610895,
+      "longitude": -73.97030152766504
+    }
+  },
+  "total": 3932,
+  "businesses": [
+    {
+      "is_claimed": true,
+      "rating": 5.0,
+      "mobile_url": "https://m.yelp.com/biz/coffee-project-new-york-new-york?adjust_creative=WUuARwcG1U-xTM2l0JclaQ&utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=WUuARwcG1U-xTM2l0JclaQ",
+      "rating_img_url": "https://s3-media1.fl.yelpcdn.com/assets/2/www/img/f1def11e4e79/ico/stars/v1/stars_5.png",
+      "review_count": 259,
+      "name": "Coffee Project New York",
+      "rating_img_url_small": "https://s3-media1.fl.yelpcdn.com/assets/2/www/img/c7623205d5cd/ico/stars/v1/stars_small_5.png",
+      "url": "https://www.yelp.com/biz/coffee-project-new-york-new-york?adjust_creative=WUuARwcG1U-xTM2l0JclaQ&utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=WUuARwcG1U-xTM2l0JclaQ",
+      "categories": [
+        [
+          "Coffee & Tea",
+          "coffee"
+        ]
+      ],
+      "phone": "2122287888",
+      "snippet_text": "This is it. This is my favorite coffee place in the world. It's a bougie, slightly hipster place but if you want an incredible, unique coffee experience go...",
+      "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/RN9YD6Ka_xIwPGZm9cZVQA/ms.jpg",
+      "snippet_image_url": "https://s3-media2.fl.yelpcdn.com/photo/lqMa2o0zVTEN7nSIHJXRrw/ms.jpg",
+      "display_phone": "+1-212-228-7888",
+      "rating_img_url_large": "https://s3-media3.fl.yelpcdn.com/assets/2/www/img/22affc4e6c38/ico/stars/v1/stars_large_5.png",
+      "id": "coffee-project-new-york-new-york",
+      "is_closed": false,
+      "location": {
+        "cross_streets": "Cooper Sq & 2nd Ave",
+        "city": "New York",
+        "display_address": [
+          "239 E 5th St",
+          "East Village",
+          "New York, NY 10003"
+        ],
+        "geo_accuracy": 8.0,
+        "neighborhoods": [
+          "East Village"
+        ],
+        "postal_code": "10003",
+        "country_code": "US",
+        "address": [
+          "239 E 5th St"
+        ],
+        "coordinate": {
+          "latitude": 40.7274823,
+          "longitude": -73.9902387
+        },
+        "state_code": "NY"
+      }
+    },
+    {
+      "is_claimed": true,
+      "rating": 4.5,
+      "mobile_url": "https://m.yelp.com/biz/marthas-country-bakery-brooklyn-2?adjust_creative=WUuARwcG1U-xTM2l0JclaQ&utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=WUuARwcG1U-xTM2l0JclaQ",
+      "rating_img_url": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+      "review_count": 41,
+      "name": "Martha's Country Bakery",
+      "rating_img_url_small": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+      "url": "https://www.yelp.com/biz/marthas-country-bakery-brooklyn-2?adjust_creative=WUuARwcG1U-xTM2l0JclaQ&utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=WUuARwcG1U-xTM2l0JclaQ",
+      "categories": [
+        [
+          "Coffee & Tea",
+          "coffee"
+        ],
+        [
+          "Bakeries",
+          "bakeries"
+        ],
+        [
+          "Desserts",
+          "desserts"
+        ]
+      ],
+      "phone": "7185990900",
+      "snippet_text": "Awesome selection. Saw all the desserts in the window, walking by just before midnight, lamenting that they were closed, till I saw people inside. Oh,...",
+      "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/QTFl8IJxeMbKJgXFfae5sA/ms.jpg",
+      "snippet_image_url": "https://s3-media2.fl.yelpcdn.com/photo/CYqbc5POJ77S0kemyxxjYg/ms.jpg",
+      "display_phone": "+1-718-599-0900",
+      "rating_img_url_large": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+      "id": "marthas-country-bakery-brooklyn-2",
+      "is_closed": false,
+      "location": {
+        "cross_streets": "3rd St & Metropolitan Ave",
+        "city": "Brooklyn",
+        "display_address": [
+          "263 Bedford Ave",
+          "Williamsburg - North Side",
+          "Brooklyn, NY 11211"
+        ],
+        "geo_accuracy": 9.5,
+        "neighborhoods": [
+          "Williamsburg - North Side"
+        ],
+        "postal_code": "11211",
+        "country_code": "US",
+        "address": [
+          "263 Bedford Ave"
+        ],
+        "coordinate": {
+          "latitude": 40.714844008496,
+          "longitude": -73.9604490995407
+        },
+        "state_code": "NY"
+      }
+    }
+  ]
+}
