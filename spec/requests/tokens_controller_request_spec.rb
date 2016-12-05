@@ -18,7 +18,7 @@ RSpec.describe Api::V1::TokensController, type: :request do
         post_login
       end
 
-      it 'status code is 200' do
+      it 'has a status code of 200' do
         expect(response.status).to eq(200)
       end
 

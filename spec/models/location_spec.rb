@@ -10,7 +10,7 @@ RSpec.describe Location, type: :model do
 
     it 'should save the incremented attendence' do
       expect{ loc.increment_attendence }.to change{ loc.attending }.by(1)
-      new_attending = Location.find_by(coords: loc.coords).attending
+      new_attending = Location.find_by(center: loc.center).attending
       expect(new_attending).to eq(loc.attending)
     end
   end
@@ -22,7 +22,7 @@ RSpec.describe Location, type: :model do
 
     it 'should save the decremented attendence' do
       expect{ loc.decrement_attendence }.to change{ loc.attending }.by(-1)
-      new_attending = Location.find_by(coords: loc.coords).attending
+      new_attending = Location.find_by(center: loc.center).attending
       expect(new_attending).to eq(loc.attending)
     end
   end

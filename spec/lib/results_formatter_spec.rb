@@ -8,7 +8,7 @@ describe 'ResultsFormatter' do
   let!(:location) {
       create(:location,
               yelp_id: yelp_results["businesses"][Random.rand(yelp_results["businesses"].count)]["yelp_id"],
-              coords: center)
+              center: center )
     }
   let(:locations) { { location["yelp_id"] => location["attending"] } }
   let(:params) { { name: "new york city" } }

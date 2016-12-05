@@ -2,7 +2,7 @@ class ResultsFormatter
   def self.fetch_results(params, current_user)
     results = YelpSearch.fetch_results(params)
     center = "#{results["region"]["center"]["latitude"]},#{results["region"]["center"]["longitude"]}"
-    locations = Location.where(coords: center).to_a.each_with_object({}) do |curr, prev|
+    locations = Location.where(center: center).to_a.each_with_object({}) do |curr, prev|
       prev[curr["yelp_id"]] = curr["attending"]
     end
     {

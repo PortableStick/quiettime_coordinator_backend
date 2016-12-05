@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20161201014007) do
 
   create_table "locations", force: :cascade do |t|
     t.string   "yelp_id"
-    t.string   "coords"
+    t.string   "center"
     t.integer  "attending",  default: 0
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
