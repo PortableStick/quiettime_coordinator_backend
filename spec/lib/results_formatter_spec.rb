@@ -14,7 +14,7 @@ describe 'ResultsFormatter' do
   let(:params) { { name: "new york city" } }
 
   context 'self#fetch_results' do
-    it 'should call YelpSearch#fetch_results with the proper params' do
+    it 'calls YelpSearch#fetch_results with the proper params' do
       expect(YelpSearch).to receive(:fetch_results).with(params).and_return(yelp_results)
       ResultsFormatter.fetch_results(params, current_user)
     end
