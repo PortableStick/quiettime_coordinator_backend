@@ -4,6 +4,7 @@ class CreateLocations < ActiveRecord::Migration[5.0]
       t.string :yelp_id
       t.string :center
       t.integer :attending, default: 0
+      t.index :center
 
       t.timestamps
     end
