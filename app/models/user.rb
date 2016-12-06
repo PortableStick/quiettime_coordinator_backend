@@ -20,4 +20,8 @@ class User < ApplicationRecord
     plans_will_change!
     update_attribute :plans, plans - [location]
   end
+
+  def generate_password_reset_token
+    update_attribute(:password_reset_token, SecureRandom.urlsafe_base64(48))
+  end
 end

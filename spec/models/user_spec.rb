@@ -2,10 +2,9 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   let(:valid_attributes) { { email: "a@b.com", password: "password", password_confirmation: "password" } }
+  let(:user) { build(:user) }
 
   context "validations" do
-    let(:user) { build(:user) }
-
     before do
       User.create(valid_attributes)
     end
@@ -44,26 +43,35 @@ RSpec.describe User, type: :model do
   end
 
   context 'plans' do
-    let(:user) { build(:user) }
-
     it 'has an array of plans' do
       expect(user.plans).to be_a(Array)
     end
 
     context '#add_location_to_plans' do
       it 'should add the given location to user\'s plans' do
-        user.add_location_to_plans("Disneyland")
-        expect(user.plans).to include("Disneyland")
+        user.add_location_to_plans("Mars")
+        expect(user.plans).to include("Mars")
       end
     end
 
     context '#remove_location_from_plans' do
       it 'should remove the given location from the user\'s plans' do
-        user.add_location_to_plans("Disneyland")
-        expect(user.plans).to include("Disneyland")
-        user.remove_location_from_plans("Disneyland")
-        expect(user.plans).not_to include("Disneyland")
+        user.add_location_to_plans("Mars")
+        expect(user.plans).to include("Mars")
+        user.remove_location_from_plans("Mars")
+        expect(user.plans).not_to include("Mars")
       end
+    end
+  end
+
+  context '#generate_password_reset_token' do
+    it 'changes the password_reset_token attribute' do
+      expect{ user.generate_password_reset_token }.to change{ user[:password_reset_token] }
+    end
+
+    it 'calls #urlsafe_base64' do
+      expect(SecureRandom).to receive(:urlsafe_base64)
+      user.generate_password_reset_token
     end
   end
 end
