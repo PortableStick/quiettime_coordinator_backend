@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :password_resets, only: [:create, :edit]
+
   namespace :api do
     namespace :v1 do
       resources :plans, only: [:create, :destroy]
