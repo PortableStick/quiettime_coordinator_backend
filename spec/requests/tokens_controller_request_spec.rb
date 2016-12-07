@@ -10,7 +10,7 @@ RSpec.describe Api::V1::TokensController, type: :request do
     end
 
     def post_login(auth_hash = { params: { auth: { email: user.email, password: user.password } } })
-      post "/api/v1/login", auth_hash
+      post api_v1_tokens_path, auth_hash
     end
 
     context 'with valid credentials' do
