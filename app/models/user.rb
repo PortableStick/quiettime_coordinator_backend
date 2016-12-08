@@ -24,4 +24,8 @@ class User < ApplicationRecord
   def generate_password_reset_token
     update_attribute(:password_reset_token, SecureRandom.urlsafe_base64(48))
   end
+
+  def clear_reset_token
+    update_attribute(:password_reset_token, nil)
+  end
 end
