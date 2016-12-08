@@ -1,0 +1,11 @@
+language: ruby
+rvm:
+- 2.3.1
+services:
+- postgresql
+before_script:
+- psql -c 'create database quiettime_coordinator_test;' -U postgres
+script: bundle exec rspec spec
+env:
+  global:
+    secure: OmwsueV7t3rXq+Rg1ITHhwm/kqV9vMvwFoBK27soqkh1FykA/OVBoaF0y9BEpaMrGCwmvVYySqsc/0xQ0ozlDgl1RbxTDZ6j4WWRTeX72JVM3VaQ00wVXh65xN3H/UhUWVgnhBuhsWgdDWSLsuC9cB15ve9EzDs+negX1n2sw/scpxp7tGXUhXpyLi4WWnqf9cR/j/tjhQKEj5M6/1x50W5hJyhO1k1//NcEfhAE8qlxkKRKDO3hBhedwkieGdnQrEo9Kk0ZI9iOmoTsp/yz+02XV8MYVFJ02w+fmcHtp3SU+uUtCHSJ4y881YZq+VulK5+Ijsbo2PbELhleKH18BjXiBeIe/7frEHya5nRNQNkOGjiG/brfEEOze1xWMAcfgJeySbxjXFZUDrT+jc1JejkoQkdJEUmQ4mbnFN74WTZGPqRK8e1TUAjpuqprhmWJeMB6d/QI2mtMEM5SBkWwBtD0nM4SxEdBX5iLD5p+xJw5sclUsAFHSOA9DNw4Tr2CrK+uoOct2yI1gK8E4TJqK/qk92kee47lrp466ZNvsg60pl1FEeDB9p/3YkkFj5i06qBLyxRUgDBeEt+HHvaifSbR0hqXYdeEkzrRQ1x+HX5jNenDQRTMV2jBZ2Lg22NocEvMt0ycGbn0cHGxw7Xh2Sirji2HkqKONjmZ8mQ1TQ0=

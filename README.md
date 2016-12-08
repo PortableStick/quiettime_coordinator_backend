@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/PortableStick/quiettime_coordinator_backend.svg?branch=master)](https://travis-ci.org/PortableStick/quiettime_coordinator_backend)
+
 <center>[Quietlife Coordinator](https://www.freecodecamp.com/challenges/build-a-nightlife-coordination-app)</center>
 --
 * User Story: As an unauthenticated user, I can view all ~~bars~~ coffee shops in my area.
