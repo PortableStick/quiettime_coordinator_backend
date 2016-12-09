@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :plans, only: [:create, :destroy]
       resources :tokens, only: [:create]
       resources :searches, only: [:create]
+      resources :users, only: [:create, :update, :destroy]
     end
   end
 end

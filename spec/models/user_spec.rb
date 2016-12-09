@@ -25,6 +25,10 @@ RSpec.describe User, type: :model do
       user.email = "a@b.com"
       expect(user).to validate_uniqueness_of :email
     end
+
+    it 'requires a unique username' do
+      expect(user).to validate_uniqueness_of :username
+    end
   end
 
   context "#downcase email" do
