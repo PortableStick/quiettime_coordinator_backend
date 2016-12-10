@@ -1,0 +1,6 @@
+codecov:
+  branch: stable
+
+ignore:
+  - "spec"
+  - "config"
