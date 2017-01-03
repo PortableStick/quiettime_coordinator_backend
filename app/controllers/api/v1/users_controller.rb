@@ -13,8 +13,8 @@ class Api::V1::UsersController < ApplicationController
   def update
     begin
       user = User.find(params[:id])
-      rescue ActiveRecord::RecordNotFound
-        return render json: { message: "User could not be found" }, status: 404
+    rescue ActiveRecord::RecordNotFound
+      return render json: { message: "User could not be found" }, status: 404
     end
     if user
       user.update_attributes(update_params)
@@ -25,10 +25,10 @@ class Api::V1::UsersController < ApplicationController
   def destroy
     begin
       User.find(params[:id]).destroy
-      rescue ActiveRecord::RecordNotFound
-        return render json: { message: "User could not be found" }, status: 404
+    rescue ActiveRecord::RecordNotFound
+      return render json: { message: "User could not be found" }, status: 404
     end
-      render json: { message: "User successfully deleted" }, status: 200
+    render json: { message: "User successfully deleted" }, status: 200
   end
 
   private
