@@ -28,10 +28,11 @@ ActiveRecord::Schema.define(version: 20161201014007) do
     t.string   "username"
     t.string   "email"
     t.string   "password_digest"
-    t.string   "plans",                default: [],              array: true
+    t.string   "plans",                default: [],                 array: true
     t.string   "password_reset_token"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.boolean  "confirmed",            default: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.index ["email"], name: "index_users_on_email", using: :btree
     t.index ["password_reset_token"], name: "index_users_on_password_reset_token", using: :btree
   end

@@ -29,4 +29,8 @@ class User < ApplicationRecord
   def clear_reset_token
     update_attribute(:password_reset_token, nil)
   end
+
+  def confirm_user
+    update_attribute(:confirmed, true);
+  end
 end

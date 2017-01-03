@@ -33,6 +33,10 @@ RSpec.describe User, type: :model do
     it 'requires a unique username' do
       expect(user).to validate_uniqueness_of :username
     end
+
+    it 'defaults the confirmed field to false' do
+      expect(user.confirmed).to eq(false)
+    end
   end
 
   context "#downcase email" do
@@ -80,6 +84,12 @@ RSpec.describe User, type: :model do
     it 'calls #urlsafe_base64' do
       expect(SecureRandom).to receive(:urlsafe_base64)
       user.generate_password_reset_token
+    end
+  end
+
+  context '#confirm_user' do
+    it 'changes the confirmation field of the user' do
+      expect{ user.confirm_user }.to change{ user.confirmed }
     end
   end
 end

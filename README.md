@@ -1,6 +1,5 @@
-[![Build Status](https://travis-ci.org/PortableStick/quiettime_coordinator_backend.svg?branch=master)](https://travis-ci.org/PortableStick/quiettime_coordinator_backend) [![Known Vulnerabilities](https://snyk.io/test/github/portablestick/quiettime_coordinator_backend/badge.svg)](https://snyk.io/test/github/portablestick/quiettime_coordinator_backend) [![codecov](https://codecov.io/gh/PortableStick/quiettime_coordinator_backend/branch/master/graph/badge.svg)](https://codecov.io/gh/PortableStick/quiettime_coordinator_backend)
-
 <center>[Quietlife Coordinator](https://www.freecodecamp.com/challenges/build-a-nightlife-coordination-app)</center>
+<center>Web Client</center>
 --
 * User Story: As an unauthenticated user, I can view all ~~bars~~ coffee shops in my area.
 

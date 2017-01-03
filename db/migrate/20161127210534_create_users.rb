@@ -6,6 +6,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :password_digest
       t.string :plans, array: true, default: '{}'
       t.string :password_reset_token
+      t.boolean :confirmed, default: false
       t.index :password_reset_token
       t.index :email
 
