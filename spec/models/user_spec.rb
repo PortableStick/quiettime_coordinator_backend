@@ -21,6 +21,10 @@ RSpec.describe User, type: :model do
       expect(user).to be_valid
     end
 
+    it 'validates the presence of an email' do
+      expect(user).to validate_presence_of :email
+    end
+
     it 'requires a unique email' do
       user.email = "a@b.com"
       expect(user).to validate_uniqueness_of :email
