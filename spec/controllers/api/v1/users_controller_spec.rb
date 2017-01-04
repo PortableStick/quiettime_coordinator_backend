@@ -38,9 +38,13 @@ RSpec.describe Api::V1::UsersController, type: :controller do
     end
 
     context "when it passes validation" do
-      it "creates a new user" do
+      it "it creates a new user" do
         post_create
         expect(User.find_by(email: "dog@dogville.com").username).to eq("dog1")
+      end
+
+      it "it sends a user confirmation email" do
+        expect{ post_create }.to change(ActionMailer::Base.deliveries, :size)
       end
     end
   end

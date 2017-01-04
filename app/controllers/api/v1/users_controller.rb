@@ -4,6 +4,7 @@ class Api::V1::UsersController < ApplicationController
   def create
     user = User.create(user_params)
     if user.valid?
+      NotifierMailer.confirm_user(user).deliver
       render json: { message: "User successfully created", user: user, jwt: Auth.issue(user: user.id) }, status: 201
     else
       render json: { message: "User could not be created", error: user.errors }, status: 400
