@@ -33,4 +33,8 @@ class User < ApplicationRecord
   def confirm_user
     update_attribute(:confirmed, true);
   end
+
+  def user_data
+    { email: email, username: username, confirmed: confirmed, plans: plans }
+  end
 end

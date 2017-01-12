@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:valid_attributes) { { email: "a@b.com", password: "password", password_confirmation: "password" } }
+  let(:valid_attributes) { { username: "Jean", email: "a@b.com", password: "password", password_confirmation: "password" } }
   let(:user) { build(:user) }
 
   context "validations" do
@@ -90,6 +90,12 @@ RSpec.describe User, type: :model do
   context '#confirm_user' do
     it 'changes the confirmation field of the user' do
       expect{ user.confirm_user }.to change{ user.confirmed }
+    end
+  end
+
+  context '#user_data' do
+    it 'returns a user object with only the parameters needed for the client' do
+      expect(user.user_data).to eq(email: user.email, username: user.username, confirmed: user.confirmed, plans: user.plans )
     end
   end
 end
