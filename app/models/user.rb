@@ -31,7 +31,7 @@ class User < ApplicationRecord
   end
 
   def confirm_user
-    update_attribute(:confirmed, true);
+    update_attribute(:confirmed, true)
   end
 
   def user_data

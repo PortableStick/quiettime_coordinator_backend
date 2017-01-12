@@ -26,7 +26,7 @@ RSpec.describe Api::V1::UsersController, type: :request do
       it "returns a success message with a JWT" do
         allow(User).to receive(:create).and_return user
         post_create
-        expect(response.body).to eq({message: "User successfully created", user: user, jwt: jwt }.to_json)
+        expect(response.body).to eq({message: "User successfully created", user: user.user_data, jwt: jwt }.to_json)
       end
     end
 
@@ -60,7 +60,7 @@ RSpec.describe Api::V1::UsersController, type: :request do
       it "returns a success message with the user's new parameters" do
         allow(User).to receive(:find).and_return(updated_user)
         valid_update
-        expect(response.body).to eq({ message: "User successfully updated", user: updated_user }.to_json)
+        expect(response.body).to eq({ message: "User successfully updated", user: updated_user.user_data }.to_json)
       end
       context "could not find user" do
         def bad_update

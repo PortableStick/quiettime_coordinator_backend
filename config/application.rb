@@ -33,5 +33,12 @@ module QuiettimeCoordinator
             ENV[key.to_s.upcase] = value
         end if File.exists?(env_file)
     end
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', headers: :any, methods: :any
+      end
+    end
   end
 end

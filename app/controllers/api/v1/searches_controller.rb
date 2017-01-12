@@ -4,6 +4,7 @@ class Api::V1::SearchesController < ApplicationController
   skip_before_action :authenticate, only: :create
 
   def create
+    puts search_params.to_json
     return error_message unless valid_search_params?
     results = ResultsFormatter.fetch_results(search_params, current_user)
     render json: results
