@@ -1,7 +1,7 @@
 require 'results_formatter'
 
 class Api::V1::SearchesController < ApplicationController
-  skip_before_action :authenticate, only: :create
+  skip_before_action :authenticate
 
   def create
     return error_message unless valid_search_params?

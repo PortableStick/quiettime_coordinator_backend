@@ -2,9 +2,15 @@ class ApplicationController < ActionController::API
   before_action :authenticate
 
   def current_user
-    @current_user ||= User.find(auth["user"]) if auth_present?
-    rescue ActiveRecord::RecordNotFound
-      render json: { message: "User not found" }, status: 404
+    if auth_present?
+      begin
+        @current_user ||= User.find(auth["user"])
+      rescue ActiveRecord::RecordNotFound
+        return render json: { message: "User not found" }, status: 404
+      end
+    else
+      @current_user = nil
+    end
   end
 
   def logged_in?
@@ -26,6 +32,7 @@ class ApplicationController < ActionController::API
   end
 
   def auth_present?
-    !request.env.fetch("HTTP_AUTHORIZATION").nil?
+    !request.headers[:HTTP_AUTHORIZATION].nil?
+    # !request.env.fetch("HTTP_AUTHORIZATION").nil?
   end
 end

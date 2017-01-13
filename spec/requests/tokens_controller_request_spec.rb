@@ -9,7 +9,7 @@ RSpec.describe Api::V1::TokensController, type: :request do
       { message: "Invalid credentials" }.to_json
     end
 
-    def post_login(auth_hash = { params: { auth: { email: user.email, password: user.password } } })
+    def post_login(auth_hash = { params: { auth: { searchinfo: user.email, password: user.password } } })
       post api_v1_tokens_path, auth_hash
     end
 
@@ -29,19 +29,19 @@ RSpec.describe Api::V1::TokensController, type: :request do
 
     context 'with invalid credentials' do
       it "returns an error when given an invalid password" do
-        post_login({ params: { auth: { email: user.email, password: "nope" } } })
+        post_login({ params: { auth: { searchinfo: user.email, password: "nope" } } })
         expect(response).to_not be_ok
         expect(response.body).to eq(error_message)
       end
 
       it "returns an error when given no credentials" do
-        post_login({ params: { auth: { email: "", password: "" } } })
+        post_login({ params: { auth: { searchinfo: "", password: "" } } })
         expect(response).to_not be_ok
         expect(response.body).to eq(error_message)
       end
 
       it "returns an error when the request object format is invalid" do
-        post_login({ params: { email: user.email, password: user.password } })
+        post_login({ params: { searchinfo: user.email, password: user.password } })
         expect(response).to_not be_ok
       end
     end
