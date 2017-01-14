@@ -4,7 +4,7 @@ class Api::V1::PlansController < ApplicationController
     if current_user.add_location_to_plans(update_params[:yelp_id])
       begin
         if Location.find_or_create_by(yelp_id: update_params[:yelp_id], center: update_params[:center]).increment_attendence
-          render json: { message: "Successful update" }, status: 202
+          render json: { message: "Successful update", plans: current_user.plans }, status: 202
         end
         rescue ActiveRecord::RecordNotFound || NoMethodError
           return render json: { message: "There was an internal error" }, status: 500

@@ -95,7 +95,7 @@ RSpec.describe User, type: :model do
 
   context '#user_data' do
     it 'returns a user object with only the parameters needed for the client' do
-      expect(user.user_data).to eq(email: user.email, username: user.username, confirmed: user.confirmed, plans: user.plans )
+      expect(user.user_data).to eq(email: user.email, username: user.username, confirmed: user.confirmed, plans: user.plans, id: user.id )
     end
   end
 end

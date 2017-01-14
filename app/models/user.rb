@@ -35,6 +35,6 @@ class User < ApplicationRecord
   end
 
   def user_data
-    { email: email, username: username, confirmed: confirmed, plans: plans }
+    { email: email, username: username, confirmed: confirmed, plans: plans, id: id }
   end
 end

@@ -14,11 +14,12 @@ RSpec.describe Api::V1::SearchesController, type: :request do
     let(:valid_update_params) { { update: { yelp_id: "something", center: "10,10"} } }
     let(:location) { build(:location) }
 
-    context 'and the Location update is successful' do
+    context 'when the Location update is successful' do
       before do
         allow(Location).to receive(:find_or_create_by).and_return(location)
         allow(location).to receive(:increment_attendence).and_return true
        post api_v1_plans_path, params: valid_update_params.merge(format: :json), headers: headers
+       user.reload
       end
 
       it 'returns a status of 202' do
@@ -26,11 +27,11 @@ RSpec.describe Api::V1::SearchesController, type: :request do
       end
 
       it 'returns a success message' do
-        expect(response.body).to eq({ message: "Successful update" }.to_json)
+        expect(response.body).to eq({ message: "Successful update", plans: user.plans }.to_json)
       end
     end
 
-    context 'and the location cannot be found or created' do
+    context 'when the location cannot be found or created' do
       before do
         allow(Location).to receive(:find_or_create_by).and_raise(ActiveRecord::RecordNotFound)
        post api_v1_plans_path, params: valid_update_params.merge(format: :json), headers: headers
