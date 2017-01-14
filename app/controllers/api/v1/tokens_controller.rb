@@ -10,7 +10,7 @@ class Api::V1::TokensController < ApplicationController
     #   user = User.find_by(username: user_params[:username])
     # end
     user = User.where('username=? OR email=?', user_params[:searchinfo], user_params[:searchinfo]).first
-    return render json: { jwt: Auth.issue(user: user.id), user: user.user_data } if user && user.authenticate(user_params[:password])
+    return render json: { user: user.user_data.merge(token: Auth.issue(user: user.id)) } if user && user.authenticate(user_params[:password])
     render json: { message: "Invalid credentials" }, status: 401
   end
 

@@ -5,7 +5,7 @@ class Api::V1::UsersController < ApplicationController
     user = User.create(user_params)
     if user.valid?
       NotifierMailer.confirm_user(user).deliver
-      render json: { message: "User successfully created", user: user.user_data, jwt: Auth.issue(user: user.id) }, status: 201
+      render json: { message: "User successfully created", user: user.user_data.merge(jwt: Auth.issue(user: user.id)) }, status: 201
     else
       render json: { message: "User could not be created", error: user.errors }, status: 400
     end
@@ -17,10 +17,8 @@ class Api::V1::UsersController < ApplicationController
     rescue ActiveRecord::RecordNotFound
       return render json: { message: "User could not be found" }, status: 404
     end
-    if user
-      user.update_attributes(update_params)
-      render json: { message: "User successfully updated", user: user.user_data }, status: 202
-    end
+    user.update_attributes(update_params)
+    render json: { message: "User successfully updated", user: user.user_data }, status: 202
   end
 
   def destroy

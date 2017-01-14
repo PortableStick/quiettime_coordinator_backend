@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe Api::V1::TokensController, type: :request do
   describe "getting the token" do
     let(:user) { create(:user) }
-    let(:token_response) { { jwt: JWT.encode({ user: user.id }, Rails.application.secrets.secret_key_base, 'HS256'), user: user.user_data }.to_json }
+    let(:token) { JWT.encode({ user: user.id }, Rails.application.secrets.secret_key_base, 'HS256') }
+    let(:token_response) { { user: user.user_data.merge(token: token) }.to_json }
 
     def error_message
       { message: "Invalid credentials" }.to_json
