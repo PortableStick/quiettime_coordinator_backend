@@ -1,5 +1,5 @@
 class Api::V1::UserConfirmationController < ApplicationController
-  def create
+  def show
     begin
       user = User.find(params[:id])
     rescue ActiveRecord::RecordNotFound

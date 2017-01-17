@@ -10,44 +10,44 @@ RSpec.describe Api::V1::UserConfirmationController, type: :controller do
     allow(controller).to receive(:current_user).and_return(user)
   end
 
-  describe "POST #create" do
+  describe "GET #show" do
     context "with a valid user id" do
-      def post_create
-        post :create, params: { id: user.id }
+      def get_show
+        post :show, params: { id: user.id }
       end
 
       it "returns https success" do
-        post_create
+        get_show
         expect(response).to have_http_status(:success)
       end
 
       it "finds the user" do
         expect(User).to receive(:find).with(user.id.to_s).and_return(user)
-        post_create
+        get_show
       end
 
       it "sends out a user confirmation email" do
-        expect{ post_create }.to change(ActionMailer::Base.deliveries, :size)
+        expect{ get_show }.to change(ActionMailer::Base.deliveries, :size)
       end
 
       it "returns a status of 202" do
-        post_create
+        get_show
         expect(response.status).to eq(202)
       end
     end
 
     context "with an invalid user id" do
-      def post_create
-        post :create, params: { id: "dog" }
+      def get_show
+        get :show, params: { id: "dog" }
       end
 
       it "returns a status of 404" do
-        post_create
+        get_show
         expect(response.status).to eq(404)
       end
 
       it "returns a failure message" do
-        post_create
+        get_show
         expect(response.body).to eq({ message: "Could not find user" }.to_json)
       end
     end
