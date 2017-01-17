@@ -27,7 +27,7 @@ RSpec.describe Api::V1::SearchesController, type: :request do
       end
 
       it 'returns a success message' do
-        expect(response.body).to eq({ message: "Successful update", plans: user.plans }.to_json)
+        expect(response.body).to eq({ message: "Successful update", user: { plans: user.plans } }.to_json)
       end
     end
 
@@ -73,6 +73,7 @@ RSpec.describe Api::V1::SearchesController, type: :request do
         before(:each) do
           user.add_location_to_plans(location[:yelp_id])
           delete api_v1_plan_path(location[:yelp_id]), headers: headers
+          user.reload
         end
 
         it 'returns a 200 status' do
@@ -80,7 +81,7 @@ RSpec.describe Api::V1::SearchesController, type: :request do
         end
 
         it 'renders a success message in JSON' do
-          expect(response.body).to eq({ message: "Successful deletion" }.to_json)
+          expect(response.body).to eq({ message: "Successful deletion", user: { plans: user.plans } }.to_json)
         end
       end
 
@@ -97,7 +98,7 @@ RSpec.describe Api::V1::SearchesController, type: :request do
       end
 
       it 'renders an error message in JSON' do
-        expect(response.body).to eq({ message: "User's plans didn't include location dog" }.to_json)
+        expect(response.body).to eq({ message: "User's plans didn't include location dog", user: { plans: user.plans } }.to_json)
       end
     end
   end
