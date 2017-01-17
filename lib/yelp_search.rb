@@ -19,7 +19,7 @@ class YelpSearch
 
   def self.search_params
     {
-      category: "coffee"
+      category_filter: "coffee"
     }
   end
 end
